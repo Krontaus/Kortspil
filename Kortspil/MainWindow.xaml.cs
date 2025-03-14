@@ -31,7 +31,7 @@ namespace Kortspil
         private string FindBillede(int kortnummer)
         {
             string resultat = "";
-                if (kortnummer < 1 || kortnummer > 52)
+                if (kortnummer < 1 || kortnummer > 52) // undersøger om kortnummeret er indenfor intervallet
                 {
                     resultat = "Purple_back.jpg";
                 }
