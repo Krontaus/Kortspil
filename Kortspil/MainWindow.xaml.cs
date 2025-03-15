@@ -23,11 +23,13 @@ namespace Kortspil
                 MessageBox.Show("Du skal indtaste et kortnummer"); // undersøger om feltet er tomt
                 return;
             }
-            if (!int.TryParse(Kort.Text, out _))
+            else if (!int.TryParse(Kort.Text, out _))
             {
                 MessageBox.Show("Du skal indtaste et tal fra 1-52"); // undersøger om der er indtastet et tal
                 return;
             }
+            else
+            {
             int kortnummer = Convert.ToInt32(Kort.Text);
             string filnavn = FindBillede(kortnummer);
             string url = $"/Billeder/{filnavn}";
@@ -35,7 +37,7 @@ namespace Kortspil
             BitmapImage image = new(uri);
            
             Billede.Source = image;
-            
+            }
         }
 
         private string FindBillede(int kortnummer)
