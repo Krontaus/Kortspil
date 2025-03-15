@@ -18,6 +18,16 @@ namespace Kortspil
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Kort.Text == "")
+            {
+                MessageBox.Show("Du skal indtaste et kortnummer"); // undersøger om feltet er tomt
+                return;
+            }
+            if (!int.TryParse(Kort.Text, out _))
+            {
+                MessageBox.Show("Du skal indtaste et tal fra 1-52"); // undersøger om der er indtastet et tal
+                return;
+            }
             int kortnummer = Convert.ToInt32(Kort.Text);
             string filnavn = FindBillede(kortnummer);
             string url = $"/Billeder/{filnavn}";
@@ -33,6 +43,7 @@ namespace Kortspil
             string resultat = "";
                 if (kortnummer < 1 || kortnummer > 52) // undersøger om kortnummeret er indenfor intervallet
                 {
+                    MessageBox.Show("Kortnummeret skal være mellem 1 og 52");
                     resultat = "Purple_back.jpg";
                 }
                 else
